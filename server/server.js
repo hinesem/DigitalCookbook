@@ -8,6 +8,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const template = require('./routes/template.router');
 
 // Express middleware
 app.use(express.json());
@@ -21,12 +22,13 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/dishes', template);
 
 // Serve static files
 app.use(express.static('build'));
 
 // App Set //
-const PORT = process.env.PORT || 8002;
+const PORT = process.env.PORT || 8003;
 
 /** Listen * */
 app.listen(PORT, () => {
