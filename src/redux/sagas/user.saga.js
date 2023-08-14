@@ -18,23 +18,10 @@ function* fetchUser() {
   }
 }
 
-function* getDishesSaga() {
-  console.log('getDishesSaga working');
-  try {
-    const response = yield fetch('/dishes');
-    const dishes = yield response.json();
-    yield put({type: 'GET_DISHES', payload: dishes});
-  } catch (error) {
-    console.log('fetching dishes failed: ', error);
-  }
-}
-
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
 }
 
-function* getDishesSaga() {
-  yield takeEvery('GET_DISHES', getDishesSaga);
-}
+
 
 export default userSaga;

@@ -8,7 +8,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const template = require('./routes/template.router');
+const template = require('./routes/dishes.router');
 
 // Express middleware
 app.use(express.json());
@@ -20,9 +20,11 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// /api/dishes
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/dishes', template);
+app.use('/api/dishes', template);
 
 // Serve static files
 app.use(express.static('build'));
