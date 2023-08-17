@@ -5,7 +5,7 @@ import DishesListItem from '../DishesListItem/DishesListItem';
 function DishesList() {
   const dispatch = useDispatch();
   let dishes = useSelector(store => store.getDishesReducer);
-  
+  console.log(dishes);
   useEffect(() => {
     console.log('useEffect DishesList');
     const action = { type: 'GET_DISHES' };

@@ -28,16 +28,16 @@ user_id INT REFERENCES "user",
 -- create "dish_ingredients" junction table
 CREATE TABLE dish_ingredients (
 id serial primary key,
-dishes_id INT REFERENCES "dishes"(id),
-ingredients_id INT REFERENCES "ingredients"(id),
+dishes_id INT REFERENCES "dishes"(id) ON DELETE CASCADE,
+ingredients_id INT REFERENCES "ingredients"(id) ON DELETE CASCADE,
 quantity INT
 );
 
 -- create "user_ingredients" junction table
 CREATE TABLE user_ingredients (
 id serial primary key,
-user_id INT REFERENCES "user"(id),
-ingredient_id INT REFERENCES "ingredients"(id)
+user_id INT REFERENCES "user"(id) ON DELETE CASCADE,
+ingredient_id INT REFERENCES "ingredients"(id) ON DELETE CASCADE
 );
 
 -- create "instructions" table
@@ -47,6 +47,16 @@ description varchar(300) not null,
 dish_id INT REFERENCES "dishes"(id),
 step INT
 );
+
+-- create "instructions" table
+CREATE TABLE instructions (
+id serial primary key,
+description varchar(300) not null,
+dish_id INT REFERENCES "dishes"(id) ON DELETE CASCADE,
+step INT
+);
+
+
 
 -- add to dishes
 INSERT INTO dishes (dish_name, user_id)
@@ -78,8 +88,11 @@ VALUES
 --junction table for dishes & instructions tables
 INSERT INTO dish_ingredients (dishes_id, ingredients_id)
 VALUES
-(1,6);
+(1,1), (1,2), (1,3), (1,4), (1,5), (1,6);
 
+INSERT INTO dish_ingredients (dishes_id, ingredients_id)
+VALUES
+(2,6), (2,7), (2,8), (2,9), (2,10), (2,11), (2, 12);
 
 --junction table for user & ingredients
 INSERT INTO user_ingredients (user_id, ingredient_id)
