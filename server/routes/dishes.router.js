@@ -21,11 +21,11 @@ router.get('/getDishes', (req, res) => {
  * POST route template
  */
 router.post('/addDish', (req, res) => {
-  const dishName = req.body;
+  const  {dishName, ingredients, instructions} = req.body;
   const addDishQuery = ` 
-  INSERT INTO "dishes" ("dish_name") VALUES ($1);
+  INSERT INTO "dishes" ("dish_name", "ingredients", "instructions") VALUES ($1,$2,$3);
   `;
-  pool.query(addDishQuery, [dishName.dishName])
+  pool.query(addDishQuery, [dishName.dishName, dishName.ingredients, dishName.instructions])
     .then((result) => {
       res.sendStatus(201);
     })
