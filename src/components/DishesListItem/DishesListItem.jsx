@@ -34,10 +34,6 @@ function DishesListItem({ dish }) { //this is an object, and we can pass more th
     }).then((response) => {
       console.log(response);
       dispatch({ type: 'GET_DISHES' })
-      // getDish().then(dishes => {
-      //   console.log(dishes)
-      //   setDishList(dishes)
-      // });
     }).catch((error) => {
       console.error(error);
     })
@@ -45,8 +41,11 @@ function DishesListItem({ dish }) { //this is an object, and we can pass more th
 
   return (
     <>
-      <div>{dish.dish_name}
-        <button type="button" classname="deleteBtn" onClick={() => deleteDish(dish.id)}>delete</button>
+      <div class="flexbox-container">
+        <div class="flexDish">{dish.dish_name}</div>
+        <div class="flexIngredients">{dish.ingredients}</div>
+        <div class="flexInstructions">{dish.instructions}</div>
+        <button type="button" className="deleteBtn" onClick={() => deleteDish(dish.id)}>delete</button>
       </div>
     </>
   );

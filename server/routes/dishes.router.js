@@ -6,7 +6,8 @@ const router = express.Router();
  * GET route template
  */
 router.get('/getDishes', (req, res) => {
-  let readDishesQuery = 'SELECT dish_name, id FROM "dishes";';
+  // let readDishesQuery = 'SELECT id, dish_name, ingredients, instructions FROM "dishes";';
+  let readDishesQuery = 'SELECT * FROM "dishes";';
   pool.query(readDishesQuery)
     .then((result) => {
       res.status(200).send(result.rows);
@@ -41,7 +42,7 @@ router.post('/addDish', (req, res) => {
 router.delete('/:id', (req, res) => {
   let deleteDish = req.params.id;
   console.log('Delete dish for id ', deleteDish);
-  const deleteDishQuery = `DELETE FROM dishes WHERE id=$1`;
+  const deleteDishQuery = `DELETE FROM dishes WHERE id = $1`;
   pool.query(deleteDishQuery, [deleteDish])
     .then((result) => {
       console.log('dish deleted');

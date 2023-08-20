@@ -23,3 +23,9 @@ function DishesList() {
 
 export default DishesList;
 
+//component of ingred list and and pulling 
+// initial get req for dishes. I'd get dishes and all ingred in one GET
+//when select dish item in right panel. map thur array of ingr and list them all
+// in that list have an edit, and this will allow you editing the array.
+// input box to add ing and when clicking it, have put req to update entire dish
+//w new array of ingredients
