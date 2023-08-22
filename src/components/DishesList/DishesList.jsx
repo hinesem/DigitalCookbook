@@ -8,8 +8,7 @@ function DishesList() {
   console.log(dishes);
   useEffect(() => {
     console.log('useEffect DishesList');
-    const action = { type: 'GET_DISHES' };
-    dispatch(action);
+    dispatch({ type: 'GET_DISHES' });
   }, []);
 
   return (

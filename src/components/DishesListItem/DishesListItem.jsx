@@ -25,16 +25,25 @@ function DishesListItem({ dish }) { //this is an object, and we can pass more th
   
 
 
-  function updateDish(dishName, dishIngredients, dishInstructions) {
-    let dish = { dishName, dishIngredients, dishInstructions }
-    return fetch(`/api/dishes${isCurrentlyEditing}`, {
+  function updateDish() {
+    let dish = { 
+      dish_name: dishName, 
+      ingredients: dishIngredients, 
+      instructions: dishInstructions 
+    }
+    console.log(`error for circular: `, dish);
+    // return 
+    fetch(`/api/dishes/${isCurrentlyEditing}`, {
       method: 'PUT',
       body: JSON.stringify(dish),
       headers: { 'Content-Type': 'application/json' }
     }).then((response) => {
       console.log(response);
+      setIsEditing(false);
+      setIsCurrentlyEditing(null);
+      dispatch({ type: 'GET_DISHES' });
     })
-      .catch((error) => {
+      .catch((error) => {1
         console.error(error);
       });
   }//end updateTask()
@@ -59,17 +68,23 @@ function DishesListItem({ dish }) { //this is an object, and we can pass more th
     })
   }
 
+  function editDishFunction(id) {
+    setIsEditing(true);
+    setIsCurrentlyEditing(id); 
+  }
+
+
   return (
     <div className="container">
-      {isCurrentlyEditing !== null ?
+      {isEditing === true ?
           <>
             <form onSubmit={updateDish}>{/* form to display when edit button is clicked  */}
-              <h2>editing: {isCurrentlyEditing}</h2>
-              <input type="text" placeholder='dishName' value={dishName} onChange={(e) => { setDishName(e.target.value) }}></input>
+              {/* <h2>editing: {isCurrentlyEditing}</h2> */}
+              <textarea type="text" placeholder='dishName' value={dishName} onChange={(e) => { setDishName(e.target.value) }}></textarea>
               <textarea type="text" placeholder='ingredients' value={dishIngredients} onChange={(e) => { setDishIngredients(e.target.value)}}></textarea>
               <textarea type="text" placeholder='instructions' value={dishInstructions} onChange={(e) => { setDishInstructions(e.target.value)}}></textarea>
               <button type="submit" className="submitChangeBtn">save change</button>
-              <button className="cancelBtn" onClick={() => setIsCurrentlyEditing(null)}>cancel</button>
+              <button className="cancelBtn" onClick={() => setIsEditing(false)}>cancel</button>
             </form>
           </>
           : null}
@@ -78,7 +93,7 @@ function DishesListItem({ dish }) { //this is an object, and we can pass more th
         <div class="flexIngredients">{dish.ingredients}</div>
         <div class="flexInstructions">{dish.instructions}</div>
         <button type="button" className="deleteBtn" onClick={() => deleteDish(dish.id)}>delete</button>
-        <button type="button" className="editBtn" onClick={() => setIsCurrentlyEditing(dish.id)}>edit</button>
+        <button type="button" className="editBtn" onClick={() => editDishFunction(dish.id)}>edit</button>
       </div>
     </div>
   );

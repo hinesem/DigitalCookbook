@@ -56,10 +56,11 @@ router.delete('/:id', (req, res) => {
 
 //PUT route
 router.put('/:id', (req, res) => {
-  let updateDish = req.params.id;
-  console.log('update dish for id: ', updateDish);
+  let dish = req.body;
+  let id = req.params.id;
+  console.log('update dish for id: ', dish);
   const updateDishQuery = 'UPDATE "dishes" SET "dish_name" = $1, "ingredients" = $2, "instructions" = $3 WHERE id = $4;';
-  pool.query(updateDishQuery, [updateDish])
+  pool.query(updateDishQuery, [dish.dish_name, dish.ingredients, dish.instructions, id]) //disheslistiemn ln 29
     .then((result) => {
       console.log('dish updated');
       res.sendStatus(200);
