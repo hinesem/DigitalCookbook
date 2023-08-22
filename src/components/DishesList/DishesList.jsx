@@ -15,7 +15,8 @@ function DishesList() {
   return (
     <>
       {dishes.map((dish, i) => {
-        return <DishesListItem key={i} dish={dish}/>;
+        return <DishesListItem key={i} dish={dish}/>;//dish is prop for dishes.router.js object info
+        
       })} 
     </>
   );

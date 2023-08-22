@@ -9,7 +9,7 @@ import DishesList from '../DishesList/DishesList';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-
+  // const [editDish, setEditDish] = useState([])
 
 
 
@@ -22,6 +22,7 @@ function UserPage() {
       <Link to="/newDishPage">
         <button>create new dish</button>
       </Link>
+      
 
 
     </div>
