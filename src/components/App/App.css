@@ -7,6 +7,9 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background:url('/Users/eric/Documents/assignments/DigitalCookbook/public/ella-olsson-C1Q3qOTlegg-unsplash.jpg') no-repeat center fixed;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 img {
@@ -20,8 +23,14 @@ Container
 
 .container {
   padding: 20px;
+  /* background-image: url("/Users/eric/Documents/assignments/DigitalCookbook/public/ella-olsson-C1Q3qOTlegg-unsplash.jpg");
+   */
 }
 
+
+.dishContainer {
+  padding: 20px;
+}
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */

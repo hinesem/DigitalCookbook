@@ -124,7 +124,7 @@ function DishesListItem({ dish }) { //this is an object, and we can pass more th
 
 
   return (
-    <div className="container">
+    <div className="dishContainer">
       {isEditing === true ?
         <>
           <form onSubmit={updateDish}>{/* form to display when edit button is clicked  */}
