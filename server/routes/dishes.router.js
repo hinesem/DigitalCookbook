@@ -24,7 +24,7 @@ router.get('/getDishes', (req, res) => {
 router.post('/addDish', (req, res) => {
   const { dishName, ingredients, instructions } = req.body;
   const addDishQuery = ` 
-  INSERT INTO "dishes" ("dish_name", "ingredients", "instructions", "user_id") VALUES ($1,$2,$3, $4);
+  INSERT INTO "dishes" ("dish_name", "ingredients", "instructions", "user_id") VALUES ($1,$2,$3,$4);
   `;
   pool.query(addDishQuery, [dishName.dishName, dishName.ingredients, dishName.instructions, req.user.id])
     .then((result) => {

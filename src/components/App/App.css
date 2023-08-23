@@ -104,6 +104,7 @@ Form Treatment
   background-color: #efefef;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  display: center;
 }
 
 input {
@@ -119,3 +120,14 @@ input {
   margin: 10px;
   padding: 20px;
 } */
+
+.loginPageImage{
+  background-image: url("/Users/eric/Documents/assignments/DigitalCookbook/public/ella-olsson-C1Q3qOTlegg-unsplash.jpg");
+  /* width: 200px;
+  height: 200px; */
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
