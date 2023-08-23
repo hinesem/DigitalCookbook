@@ -6,9 +6,9 @@ const router = express.Router();
  * GET route template
  */
 router.get('/getDishes', (req, res) => {
-  let readDishesQuery = 'SELECT id, dish_name, ingredients, instructions FROM "dishes";';
+  let readDishesQuery = 'SELECT id, dish_name, ingredients, instructions FROM "dishes" WHERE user_id = $1;';
 
-  pool.query(readDishesQuery)
+  pool.query(readDishesQuery, [req.user.id])
     .then((result) => {
       res.status(200).send(result.rows);
     })
@@ -24,9 +24,9 @@ router.get('/getDishes', (req, res) => {
 router.post('/addDish', (req, res) => {
   const { dishName, ingredients, instructions } = req.body;
   const addDishQuery = ` 
-  INSERT INTO "dishes" ("dish_name", "ingredients", "instructions") VALUES ($1,$2,$3);
+  INSERT INTO "dishes" ("dish_name", "ingredients", "instructions", "user_id") VALUES ($1,$2,$3, $4);
   `;
-  pool.query(addDishQuery, [dishName.dishName, dishName.ingredients, dishName.instructions])
+  pool.query(addDishQuery, [dishName.dishName, dishName.ingredients, dishName.instructions, req.user.id])
     .then((result) => {
       res.sendStatus(201);
     })

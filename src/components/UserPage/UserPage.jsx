@@ -16,12 +16,11 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <LogOutButton className="btn" />
-      <DishesList />
       <Link to="/newDishPage">
         <button>create new dish</button>
       </Link>
+      <DishesList />
+      
       
 
 
