@@ -7,7 +7,7 @@ import React from 'react';
 
 function InfoPage() {
   return (
-    <div className="container">
+    <div className="tech">
       <h1>Technologies utilized</h1>
       <p>CSS</p>
       <p>Express</p>
@@ -17,7 +17,7 @@ function InfoPage() {
       <p>Node</p>
       <p>Passport</p>
       <p>PostgreSQL</p>
-      <p>React: hooks, Redux, Sagas</p>
+      <p>React: hooks, Redux, sagas</p>
 
     </div>
   );

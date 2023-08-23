@@ -15,16 +15,10 @@ function UserPage() {
 
   return (
     <div className="container" >
-      <img className="fit" src="/Users/eric/Documents/assignments/DigitalCookbook/public/ella-olsson-C1Q3qOTlegg-unsplash.jpg"></img>
-      
       <Link to="/newDishPage">
         <button>create new dish</button>
       </Link>
       <DishesList />
-      
-      
-
-
     </div>
   );
 }
